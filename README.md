@@ -63,7 +63,7 @@ docker push mikosangpribumirajin/smart-charity-backend:1.0.1
 cd frontend
 docker build -t mikosangpribumirajin/smart-charity-frontend:1.0.0 .
 docker push mikosangpribumirajin/smart-charity-frontend:1.0.0
-
+```
 ---
 ## Development Team
 * Alvin Oktavian Surya Saputra
