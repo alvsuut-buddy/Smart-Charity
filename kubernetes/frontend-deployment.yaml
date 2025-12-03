@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: smart-charity-frontend-deployment
+  labels:
+    app: smart-charity-frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: smart-charity-frontend
+  template:
+    metadata:
+      labels:
+        app: smart-charity-frontend
+    spec:
+      containers:
+      - name: smart-charity-frontend
+        image: mikosangpribumirajin/smart-charity-frontend:1.0.0
+        ports:
+        - containerPort: 80 # Port Nginx
+        # Resource requests/limits (opsional)
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "100m"
+          limits:
+            memory: "128Mi"
+            cpu: "200m"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: smart-charity-frontend-service
+spec:
+  selector:
+    app: smart-charity-frontend
+  ports:
+    - protocol: TCP
+      port: 80 # Port service yang akan diakses dari luar
+      targetPort: 80 # Port kontainer frontend
+  type: ClusterIP # Atau LoadBalancer jika VPS Anda menyediakan (kebanyakan tidak)
+                # NodePort akan mengekspos service di port 30000-32767 di IP publik VPS

@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: smart-charity-backend-deployment
+  labels:
+    app: smart-charity-backend
+spec:
+  replicas: 1 
+  selector:
+    matchLabels:
+      app: smart-charity-backend
+  template:
+    metadata:
+      labels:
+        app: smart-charity-backend
+    spec:
+      containers:
+      - name: smart-charity-backend
+        image: mikosangpribumirajin/smart-charity-backend:1.0.1
+        ports:
+        - containerPort: 3000 # Port aplikasi Node.js Anda
+        env:
+          - name: PORT
+            value: "3000" # Pastikan ini sesuai dengan port aplikasi Node.js Anda
+          - name: MONGODB_URI
+            valueFrom:
+              secretKeyRef:
+                name: smart-charity-backend-secret
+                key: MONGODB_URI
+        # Resource requests/limits (opsional, tapi disarankan untuk produksi)
+        resources:
+          requests:
+            memory: "128Mi"
+            cpu: "200m"
+          limits:
+            memory: "256Mi"
+            cpu: "500m"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: smart-charity-backend-service
+spec:
+  selector:
+    app: smart-charity-backend
+  ports:
+    - protocol: TCP
+      port: 3000 # Port service yang akan diakses oleh frontend
+      targetPort: 3000 # Port kontainer backend
+  type: ClusterIP # Service ini hanya bisa diakses dari dalam cluster Kubernetes (oleh frontend)

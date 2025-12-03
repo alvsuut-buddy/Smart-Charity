@@ -1,0 +1,31 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: smart-charity-ingress
+  annotations:
+    # annotations khusus untuk Traefik jika Anda ingin mengaktifkan fitur tertentu
+    # traefik.ingress.kubernetes.io/router.entrypoints: web,websecure # Contoh untuk HTTP dan HTTPS
+spec:
+  rules:
+  #- host: your-domain.com # Ganti dengan nama domain Anda, atau abaikan baris ini jika Anda tidak menggunakan domain
+  - http:
+      paths:
+      - path: /api # Path untuk backend API
+        pathType: Prefix
+        backend:
+          service:
+            name: smart-charity-backend-service
+            port:
+              number: 3000 # Port service backend
+      - path: / # Path default untuk frontend
+        pathType: Prefix
+        backend:
+          service:
+            name: smart-charity-frontend-service
+            port:
+              number: 80 # Port service frontend
+  # Jika Anda menggunakan HTTPS dengan cert-manager (opsional, langkah lanjutan)
+  # tls:
+  # - hosts:
+  #   - your-domain.com
+  #   secretName: your-domain-tls-secret # Nama Secret yang berisi sertifikat TLS
