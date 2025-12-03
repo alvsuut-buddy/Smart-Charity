@@ -21,6 +21,22 @@ IoT-Based Smart Charity Management System with Real-time Monitoring. This projec
 * Sensor: TCS3200 (Color Sensor)
 * Display: LCD 16x2 I2C
 
+### Pin Map
+| Component | Pin Name | ESP32 GPIO Pin |
+| :--- | :--- | :--- |
+| **TCS3200** | S0 | 3V3 |
+| | S1 | 3V3 |
+| | S2 | GPIO 2 |
+| | S3 | GPIO 15 |
+| | LED | 3V3 |
+| | OUT | GPIO 4 |
+| | VCC | 3V3 |
+| | GND | GND |
+| **LCD I2C** | SDA | GPIO 21 |
+| | SCL | GPIO 22 |
+| | VCC | 5V |
+| | GND | GND |
+
 ### 2. Software (Backend & Frontend) 
 * Backend: Node.js, Express.js
 * Database: MongoDB Atlas (Cloud NoSQL)
@@ -42,7 +58,8 @@ IoT-Based Smart Charity Management System with Real-time Monitoring. This projec
 * /backend: Node.js API source code and Dockerfile.
 * /frontend: Web Dashboard source code and Nginx Dockerfile.
 * /kubernetes: Kubernetes manifests for deployment (Deployment, Service, Ingress).
-
+* /docs: Contains full project documentation, flowcharts, and topology images.
+  
 ---
 
 ## How to Run (Deployment)
