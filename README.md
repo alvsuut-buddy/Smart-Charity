@@ -16,7 +16,7 @@ IoT-Based Smart Charity Management System with Real-time Monitoring. This projec
 
 ## Architecture & Technology
 
-### 1. Hardware (IoT) 
+### 1. Hardware
 * Microcontroller: ESP32 
 * Sensor: TCS3200 (Color Sensor)
 * Display: LCD 16x2 I2C
@@ -37,13 +37,13 @@ IoT-Based Smart Charity Management System with Real-time Monitoring. This projec
  | | VCC | 5V |
  | | GND | GND |
 
-### 2. Software (Backend & Frontend) 
+### 2. Software
 * Backend: Node.js, Express.js
 * Database: MongoDB Atlas (Cloud NoSQL)
 * Frontend: HTML5, CSS3, JavaScript (Fetch API)
 * Web Server: Nginx
 
-### 3. Infrastructure (DevOps) 
+### 3. Infrastructure
 * Containerization: Docker
 * Orchestration: K3s (Kubernetes)
 * Server OS: Ubuntu
