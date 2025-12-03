@@ -9,16 +9,16 @@
 #define S3 15
 #define OUT 4
 
-// Inisialisasi LCD I2C (alamat 0x27, 16 kolom, 2 baris)
+// Inisialisasi LCD I2C
 LiquidCrystal_I2C lcd(0x27, 16, 2);
 
 // Konfigurasi WiFi
-const char* ssid = "Knyazeva";         // Ganti dengan nama WiFi Anda
-const char* password = "takonzura";  // Ganti dengan password WiFi Anda
+const char* ssid = "<SSID_WiFi>";         
+const char* password = "PASSWD_WiFi"; 
 
 // URL server (ganti dengan IP komputer Anda)
-const char* serverURL = "http://192.168.100.117:3000/api/donation"; // Ganti IP sesuai komputer Anda
-const char* lcdMessageURL = "http://192.168.100.117:3000/api/lcd-message"; // URL untuk mengambil pesan LCD
+const char* serverURL = "http://<IP>:3000/api/donation";
+const char* lcdMessageURL = "http://<IP>:3000/api/lcd-message"; 
 
 // Variabel warna
 int Red = 0, Green = 0, Blue = 0;
@@ -29,16 +29,16 @@ int msg = 0;
 bool uangSedangTerdeteksi = false;
 int nominalTerakhir = 0;
 unsigned long waktuDeteksiTerakhir = 0;
-const unsigned long DEBOUNCE_TIME = 3000; // 3 detik debounce
-const unsigned long TIMEOUT_DETECTION = 5000; // 5 detik timeout untuk reset state
+const unsigned long DEBOUNCE_TIME = 3000; 
+const unsigned long TIMEOUT_DETECTION = 5000; 
 
 // Variabel untuk pesan LCD
 String currentLcdLine1 = "Sedekah membawa";
 String currentLcdLine2 = "berkah";
 unsigned long lastMessageCheck = 0;
-const unsigned long MESSAGE_CHECK_INTERVAL = 5000; // Check pesan setiap 5 detik
+const unsigned long MESSAGE_CHECK_INTERVAL = 5000; 
 
-// RGB range untuk setiap nominal (bisa disesuaikan dengan kalibrasi)
+// RGB range untuk setiap nominal (sesuaikan dengan kalibrasi)
 struct RGBRange {
   int rMin, rMax, gMin, gMax, bMin, bMax;
 };
